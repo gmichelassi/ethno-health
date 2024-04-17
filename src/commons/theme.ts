@@ -1,0 +1,71 @@
+import { ColorSchemeName } from 'react-native';
+import {
+  MD3LightTheme as DefaultLightTheme,
+  MD3DarkTheme as DefaultDarkTheme,
+} from 'react-native-paper';
+import { ThemeProp } from 'react-native-paper/lib/typescript/types';
+
+const theme: Record<NonNullable<ColorSchemeName>, ThemeProp> = {
+  dark: {
+    ...DefaultDarkTheme,
+    dark: true,
+    colors: {
+      ...DefaultDarkTheme.colors,
+      primary: '#ffba2c',
+      onPrimary: '#422c00',
+      primaryContainer: '#5f4100',
+      onPrimaryContainer: '#ffdeaa',
+      secondary: '#dac3a1',
+      onSecondary: '#3c2e16',
+      secondaryContainer: '#54442a',
+      onSecondaryContainer: '#f8dfbb',
+      tertiary: '#b4cea5',
+      onTertiary: '#203619',
+      tertiaryContainer: '#364d2d',
+      onTertiaryContainer: '#cfebc0',
+      error: '#ffb4ab',
+      onError: '#690005',
+      errorContainer: '#93000a',
+      onErrorContainer: '#ffdad6',
+      background: '#1f1b16',
+      onBackground: '#eae1d9',
+      surface: '#1f1b16',
+      onSurface: '#eae1d9',
+      surfaceVariant: '#4e4639',
+      onSurfaceVariant: '#d2c5b4',
+      outline: '#9a8f80',
+    },
+  },
+  light: {
+    ...DefaultLightTheme,
+    dark: false,
+    colors: {
+      ...DefaultLightTheme.colors,
+      primary: '#7d5700',
+      onPrimary: '#ffffff',
+      primaryContainer: '#ffdeaa',
+      onPrimaryContainer: '#271900',
+      secondary: '#6d5c3f',
+      onSecondary: '#ffffff',
+      secondaryContainer: '#f8dfbb',
+      onSecondaryContainer: '#f8dfbb',
+      tertiary: '#4d6543',
+      onTertiary: '#ffffff',
+      tertiaryContainer: '#cfebc0',
+      onTertiaryContainer: '#0c2006',
+      error: '#ba1a1a',
+      onError: '#ffffff',
+      errorContainer: '#ffdad6',
+      onErrorContainer: '#410002',
+      background: '#fffbff',
+      onBackground: '#1f1b16',
+      surface: '#fffbff',
+      onSurface: '#1f1b16',
+      surfaceVariant: '#eee0cf',
+      onSurfaceVariant: '#4e4639',
+      outline: '#807667',
+    },
+  },
+};
+
+export { theme };
