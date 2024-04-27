@@ -31,7 +31,10 @@ export default function DiagnosisScreen({
         style={{ ...styles.image, borderRadius }}
         source={{ uri: imageUri }}
       />
-      <ScrollView style={{ ...styles.diagnosis, borderColor, borderRadius }}>
+      <ScrollView
+        style={{ ...styles.diagnosisContainer, borderColor, borderRadius }}
+        contentContainerStyle={styles.diagnosisContent}
+      >
         {diagnosis.map((data, index) => (
           <ProbabilityIndicator key={index} {...data} />
         ))}
@@ -48,10 +51,12 @@ const styles = StyleSheet.create({
   image: {
     height: '60%',
   },
-  diagnosis: {
+  diagnosisContainer: {
     height: '40%',
     borderWidth: 1,
-    padding: 10,
     marginTop: 16,
+  },
+  diagnosisContent: {
+    padding: 10,
   },
 });
