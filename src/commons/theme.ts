@@ -3,9 +3,9 @@ import {
   MD3LightTheme as DefaultLightTheme,
   MD3DarkTheme as DefaultDarkTheme,
 } from 'react-native-paper';
-import { ThemeProp } from 'react-native-paper/lib/typescript/types';
+import { MD3Theme } from 'react-native-paper/lib/typescript/types';
 
-const theme: Record<NonNullable<ColorSchemeName>, ThemeProp> = {
+const theme: Record<NonNullable<ColorSchemeName>, MD3Theme> = {
   dark: {
     ...DefaultDarkTheme,
     dark: true,

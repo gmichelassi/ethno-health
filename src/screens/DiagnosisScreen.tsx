@@ -1,6 +1,23 @@
 import React from 'react';
-import { Text } from 'react-native-paper';
+import { View, StyleSheet, useColorScheme } from 'react-native';
+
+import DiagnosisCard from '../components/DiagnosisCard';
+import { theme } from '../commons/theme';
 
 export default function DiagnosisScreen() {
-  return <Text>Diagnosis Screen</Text>;
+  const colorScheme = useColorScheme() || 'light';
+  const backgroundColor = theme?.[colorScheme]?.colors?.surfaceVariant;
+
+  return (
+    <View style={{ backgroundColor, ...styles.container }}>
+      <DiagnosisCard />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    padding: 16,
+  },
+});

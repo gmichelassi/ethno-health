@@ -1,9 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import DiagnosisScreen from '../screens/DiagnosisScreen';
-import { useColorScheme } from 'react-native';
 import { theme } from '../commons/theme';
+import { useColorScheme } from 'react-native';
+import CameraScreen from '../screens/CameraScreen';
+import DiagnosisScreen from '../screens/DiagnosisScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,7 +22,7 @@ export default function DiagnosisNavigator() {
 
   return (
     <Navigator initialRouteName="Resultados" screenOptions={screenOptions}>
-      <Screen name="Camera" component={DiagnosisScreen} />
+      <Screen name="Camera" component={CameraScreen} />
       <Screen name="Resultados" component={DiagnosisScreen} />
     </Navigator>
   );
