@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, useColorScheme } from 'react-native';
+import { ActivityIndicator, IconButton } from 'react-native-paper';
 import {
   Camera,
   useCameraDevice,
@@ -9,13 +10,14 @@ import {
 import { useIsFocused } from '@react-navigation/native';
 
 import { CameraScreenProps } from '../navigation/types';
+import { theme } from '../commons/theme';
 import ErrorScreen from '../commons/ErrorScreen';
 import PermissionsScreen from '../commons/PermissionsScreen';
-import { IconButton } from 'react-native-paper';
-import { theme } from '../commons/theme';
 
 export default function CameraScreen({ navigation }: CameraScreenProps) {
   const cameraRef = useRef<Camera>(null);
+
+  const [loading, setLoading] = useState(false);
 
   const colorScheme = useColorScheme() || 'light';
   const backgroundColor = theme?.[colorScheme]?.colors?.surface;
@@ -31,6 +33,8 @@ export default function CameraScreen({ navigation }: CameraScreenProps) {
 
   const goBack = navigation.goBack;
 
+  if (loading) return <ActivityIndicator style={styles.loading} animating />;
+
   if (!hasPermission) return <PermissionsScreen goBack={goBack} />;
 
   if (!device) return <ErrorScreen />;
@@ -38,9 +42,11 @@ export default function CameraScreen({ navigation }: CameraScreenProps) {
   const onPress = async () => {
     if (!cameraRef.current) return;
 
+    setLoading(true);
+
     const photo = await cameraRef.current.takePhoto();
 
-    console.log('photo on CameraScreen:', photo);
+    setLoading(false);
 
     navigation.navigate('Resultados', { photo });
   };
@@ -76,5 +82,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     bottom: 32,
     position: 'absolute',
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
