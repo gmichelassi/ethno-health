@@ -2,11 +2,12 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
 import { useColorScheme } from 'react-native';
 
+import { BottomTabNavigatorProps } from './types';
 import { theme } from '../commons/theme';
 import ActivitiesNavigator from './ActivitiesNavigator';
 import DiagnosisNavigator from './DiagnosisNavigator';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator<BottomTabNavigatorProps>();
 const { Navigator, Screen } = Tab;
 
 export default function BottomTabNavigator() {
@@ -17,7 +18,7 @@ export default function BottomTabNavigator() {
 
   return (
     <Navigator
-      initialRouteName="diagnosis"
+      initialRouteName="Diagnóstico"
       backBehavior="initialRoute"
       activeColor={activeColor}
       barStyle={{ backgroundColor: barColor }}

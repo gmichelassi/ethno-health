@@ -11,7 +11,7 @@ import {
   uri as mockedUri,
 } from '../utils/dummy-data';
 
-export type DiagnosisScreenProps = {
+export type DiagnosisCardProps = {
   diagnosis?: ProbabilityIndicatorProps[];
   imageUri?: string;
 };
@@ -19,7 +19,7 @@ export type DiagnosisScreenProps = {
 export default function DiagnosisScreen({
   diagnosis = mockedDiagnosis,
   imageUri = mockedUri,
-}: DiagnosisScreenProps) {
+}: DiagnosisCardProps) {
   const colorScheme = useColorScheme() || 'light';
 
   const borderColor = theme?.[colorScheme]?.colors?.primary;
