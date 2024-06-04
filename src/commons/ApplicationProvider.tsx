@@ -1,7 +1,8 @@
 import React, { PropsWithChildren } from 'react';
-import { useColorScheme } from 'react-native';
-import { PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
+import { PaperProvider } from 'react-native-paper';
+import { useColorScheme } from 'react-native';
+import BootSplash from 'react-native-bootsplash';
 
 import { theme } from './theme';
 import { useCameraPermission } from 'react-native-vision-camera';
@@ -14,7 +15,7 @@ export default function ApplicationProvider({ children }: PropsWithChildren) {
   if (!hasPermission) requestPermission();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={() => BootSplash.hide({ fade: true })}>
       <PaperProvider theme={theme[colorScheme]}>{children}</PaperProvider>
     </NavigationContainer>
   );
