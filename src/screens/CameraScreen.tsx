@@ -20,6 +20,7 @@ export default function CameraScreen({ navigation }: CameraScreenProps) {
   const [loading, setLoading] = useState(false);
 
   const colorScheme = useColorScheme() || 'light';
+  const loadingBackgroundColor = theme?.[colorScheme]?.colors?.surfaceVariant;
   const backgroundColor = theme?.[colorScheme]?.colors?.surface;
 
   const { hasPermission } = useCameraPermission();
@@ -33,7 +34,13 @@ export default function CameraScreen({ navigation }: CameraScreenProps) {
 
   const goBack = navigation.goBack;
 
-  if (loading) return <ActivityIndicator style={styles.loading} animating />;
+  if (loading)
+    return (
+      <ActivityIndicator
+        style={{ ...styles.loading, backgroundColor: loadingBackgroundColor }}
+        animating
+      />
+    );
 
   if (!hasPermission) return <PermissionsScreen goBack={goBack} />;
 

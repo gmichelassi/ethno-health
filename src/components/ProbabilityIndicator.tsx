@@ -37,7 +37,7 @@ export default function ProbabilityIndicator({
     setMenuOpen(!menuOpen);
   };
 
-  const probabilityPercentage = `${probability * 100}%`;
+  const probabilityPercentage = `${Math.ceil(probability * 100)}%`;
   const title = `${ethnicityLabelsTranslator(
     ethnicity,
   )} (${probabilityPercentage})`;
